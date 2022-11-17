@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `name` VARCHAR(50) NOT NULL,
   `shippinginfo` VARCHAR(50) NOT NULL,
   `paymentinfo` VARCHAR(50) NOT NULL,
-  PRIMARY KEY(username))
+  PRIMARY KEY(`username`))
 
 CREATE TABLE IF NOT EXISTS `Cart` (
   `username` VARCHAR(30) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `Cart` (
   `b8` INT NOT NULL,
   `b9` INT NOT NULL,
   `b10` INT NOT NULL,
-  PRIMARY KEY(username))
+  PRIMARY KEY(`username`))
 
 CREATE TABLE IF NOT EXISTS `Book` (
   `bookid` VARCHAR(5) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `published` VARCHAR(30) NOT NULL,
   `stock` INT NOT NULL,
   `price` INT NOT NULL,
-  PRIMARY KEY(bookid))
+  PRIMARY KEY(`bookid`))
 
 CREATE TABLE IF NOT EXISTS `Transaction` (
   `transactionid` INT NOT NULL,
@@ -36,4 +36,5 @@ CREATE TABLE IF NOT EXISTS `Transaction` (
   `purchaseList` VARCHAR(300) NOT NULL,
   `cost` INT NOT NULL,
   `date` VARCHAR(30) NOT NULL,
+  PRIMARY KEY(`transactionid`)
 )
