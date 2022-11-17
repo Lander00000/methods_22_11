@@ -8,16 +8,16 @@ CREATE TABLE IF NOT EXISTS User (
 
 CREATE TABLE IF NOT EXISTS Cart (
   `username` VARCHAR(30) NOT NULL,
-  `b1` INT NOt NULL,
-  `b2` INT NOt NULL,
-  `b3` INT NOt NULL,
-  `b4` INT NOt NULL,
-  `b5` INT NOt NULL,
-  `b6` INT NOt NULL,
-  `b7` INT NOt NULL,
-  `b8` INT NOt NULL,
-  `b9` INT NOt NULL,
-  `b10` INT NOt NULL,
+  `b1` INT NOT NULL,
+  `b2` INT NOT NULL,
+  `b3` INT NOT NULL,
+  `b4` INT NOT NULL,
+  `b5` INT NOT NULL,
+  `b6` INT NOT NULL,
+  `b7` INT NOT NULL,
+  `b8` INT NOT NULL,
+  `b9` INT NOT NULL,
+  `b10` INT NOT NULL,
   PRIMARY KEY(username))
 
 CREATE TABLE IF NOT EXISTS Book (
@@ -37,4 +37,3 @@ CREATE TABLE IF NOT EXISTS Transaction (
   `cost` INT NOT NULL,
   `date` VARCHAR(30) NOT NULL,
 )
-
