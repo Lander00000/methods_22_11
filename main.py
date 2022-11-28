@@ -8,6 +8,15 @@ cursor = con.cursor(buffered=True)
 
 def main():
     global cur_user
+    menutext = """1. Display Books
+2. View Cart
+3. Add Item to Cart
+4. Remove Item from Cart
+5. View Order History
+6. Edit Shipping Information
+7. Edit Payment Information
+8. Delete Account
+9. Log Out\n"""
     cur_user = ""
     active = 1
     while active:
@@ -21,6 +30,7 @@ def main():
             else:
                 print("username and/or password incorrect")
                 pass
+        print(menutext)
         x = input("What would you like to do?(numeric input)")
         if not tryint(x):
             continue
