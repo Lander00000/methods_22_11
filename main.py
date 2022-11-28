@@ -31,9 +31,10 @@ def main():
             display("book", filter)
             pass
         elif x == 2:
-            logout()
+            display("cart", cur_user)
             pass
         elif x == 3:
+            
             pass
         elif x == 4:
             pass
