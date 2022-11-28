@@ -7,7 +7,44 @@ cursor = con.cursor(buffered=True)
 
 
 def main():
-    print("temp")
+    global cur_user
+    cur_user = ""
+    active = 1
+    while active:
+        while cur_user == "":
+            user = input("Username:")
+            password = input("Password:")
+            if login(user, password):
+                pass
+            else:
+                print("username and/or password incorrect")
+        x = input("What would you like to do?(numeric input)")
+        try:
+            x = int(x)
+        except:
+            print("Error: enter integer input")
+            continue
+        if x == 1:
+            input()
+            display()
+            pass
+        elif x == 2:
+            pass
+        elif x == 3:
+            pass
+        elif x == 4:
+            pass
+        elif x == 5:
+            pass
+        elif x == 6:
+            pass
+        elif x == 7:
+            pass
+        elif x == 100:
+            active = 0
+            print("exiting menu")
+        else:
+            print("Error: invalid input")
 
 def display(tablename, genrefilter=""):
     if tablename == "user" or tablename == "book" or tablename == "transaction" or tablename == "cart":
