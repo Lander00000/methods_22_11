@@ -25,11 +25,10 @@ def main():
         if not tryint(x):
             continue
         if x == 1:
-            filter = ""
-            table = input("enter genre here or leave blank:")
+            filter = input("enter genre here or leave blank:")
             if not trystr(table):
                 pass
-            display(table, filter)
+            display("book", filter)
             pass
         elif x == 2:
             logout()
