@@ -35,7 +35,8 @@ CREATE TABLE `book` (
   `published` varchar(30) NOT NULL,
   `stock` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `genre` varchar(255) NOT NULL
+  `genre` varchar(255) NOT NULL,
+  PRIMARY KEY(`bookid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,7 +46,23 @@ CREATE TABLE `book` (
 --
 
 CREATE TABLE `cart` (
-  `username` varchar(30) NOT NULL
+  `username` varchar(30) NOT NULL,
+  `b1` INT NOT NULL,
+  `b2` INT NOT NULL,
+  `b3` INT NOT NULL,
+  `b4` INT NOT NULL,
+  `b5` INT NOT NULL,
+  `b6` INT NOT NULL,
+  `b7` INT NOT NULL,
+  `b8` INT NOT NULL,
+  `b9` INT NOT NULL,
+  `b10` INT NOT NULL,
+  PRIMARY KEY(`username`),
+  CONSTRAINT `cartowner`
+    FOREIGN KEY (`username`)
+    REFERENCES `user` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -59,7 +76,13 @@ CREATE TABLE `transaction` (
   `username` varchar(30) NOT NULL,
   `purchaseList` varchar(300) NOT NULL,
   `cost` int(11) NOT NULL,
-  `date` varchar(30) NOT NULL
+  `date` varchar(30) NOT NULL,
+  PRIMARY KEY(`transactionid`),
+  CONSTRAINT `transacter`
+    FOREIGN KEY (`username`)
+    REFERENCES `user` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,27 +106,6 @@ CREATE TABLE `user` (
 --
 -- Indexes for table `book`
 --
-ALTER TABLE `book`
-  ADD PRIMARY KEY (`bookid`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transactionid`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`username`);
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
