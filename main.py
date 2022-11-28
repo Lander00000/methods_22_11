@@ -14,21 +14,27 @@ def main():
         while cur_user == "":
             user = input("Username:")
             password = input("Password:")
+            if not trystr(user) or not trystr(password):
+                pass
             if login(user, password):
                 pass
             else:
                 print("username and/or password incorrect")
+                pass
         x = input("What would you like to do?(numeric input)")
-        try:
-            x = int(x)
-        except:
-            print("Error: enter integer input")
+        if not tryint(x):
             continue
         if x == 1:
-            input()
-            display()
+            table = input("what table do you want to input:")
+            try:
+                table = str(table)
+            except:
+                print("Error: enter string input")
+                continue
+            display(table)
             pass
         elif x == 2:
+            logout()
             pass
         elif x == 3:
             pass
@@ -268,6 +274,24 @@ def delete_user(user):
     query4 = "DELETE FROM `user` WHERE username = '{}'".format(user)
     cursor.execute(query4)
     con.commit()
+
+
+def trystr(x):
+    try:
+        str(x)
+    except:
+        print("Error: enter string input\n")
+        return False
+    return True
+
+
+def tryint(x):
+    try:
+        int(x)
+    except:
+        print("Error: enter integer input\n")
+        return False
+    return True
 
 
 if __name__ == '__main__':
