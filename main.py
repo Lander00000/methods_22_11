@@ -49,14 +49,20 @@ def main():
             add = input("please enter the bookid value of the book you wish to add to your cart:")
             count = input("please enter the count of how many copies of the book to add:")
             if tryint(add) and tryint(count):
-                addbook(cur_user, add, count)
+                if not rsure():
+                    pass
+                else:
+                    addbook(cur_user, add, count)
             pass
         elif x == 4:
             display("book")
             remove = input("please enter the bookid value of the book you wish to add to your cart:")
             count = input("please enter the count of how many copies of the book to add:")
             if tryint(remove) and tryint(count):
-                removebook(cur_user, remove, count)
+                if not rsure():
+                    pass
+                else:
+                    removebook(cur_user, remove, count)
             pass
         elif x == 5:
             display("transaction", cur_user)
@@ -65,18 +71,28 @@ def main():
             newinfo = input("enter new shipping info:")
             if not trystr(newinfo):
                 pass
-            update_shipping(cur_user, newinfo)
+            if not rsure():
+                pass
+            else:
+                update_shipping(cur_user, newinfo)
             pass
         elif x == 7:
             newinfo = input("enter new payment info:")
             if not trystr(newinfo):
                 pass
-            update_payment(cur_user, newinfo)
+            if not rsure():
+                pass
+            else:
+                update_payment(cur_user, newinfo)
             pass
         elif x == 8:
-
+            if not rsure():
+                pass
+            else:
+                delete_user(cur_user)
             pass
         elif x == 9:
+            logout()
             pass
         elif x == 10:
             active = 0
@@ -326,7 +342,18 @@ def tryint(x):
     return True
 
 def rsure():
-    input("are you sure: y/n")
+    x = input("are you sure: y/n")
+    if trystr(x):
+        if x == "y":
+            return True
+        elif x == "n":
+            return False
+        else:
+            print("please enter either y or n:")
+            return False
+    else:
+        return False
+
 
 
 if __name__ == '__main__':
