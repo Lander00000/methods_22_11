@@ -62,8 +62,8 @@ CREATE TABLE `cart` (
     FOREIGN KEY (`username`)
     REFERENCES `user` (`username`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE);
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `transaction` (
     FOREIGN KEY (`username`)
     REFERENCES `user` (`username`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE);
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
