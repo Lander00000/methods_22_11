@@ -351,8 +351,8 @@ def add_book_item(isbn, title, author, published, stock, price, genre):
 
 def add_user_item(username, password, name, shippinginfo, paymentinfo):
     query = "INSERT INTO `user`(`username`, `password`, `name`, `shippinginfo`, `paymentinfo`) VALUES ('{}','{}','{}','{}','{}')".format(username, password, name, shippinginfo, paymentinfo)
-    add_cart_item(username)
     cursor.execute(query)
+    add_cart_item(username)
     con.commit()
 
 
