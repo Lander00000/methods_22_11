@@ -35,6 +35,7 @@ def main():
         x = input("What would you like to do?(numeric input)")
         if not tryint(x):
             continue
+        x = int(x)
         if x == 1:
             filter = input("enter genre here or leave blank:")
             if not trystr(filter):
