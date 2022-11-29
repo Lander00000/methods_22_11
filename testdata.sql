@@ -16,3 +16,10 @@ INSERT INTO book VALUES
 ("8", "0692528318", "The Federalist Papers", "Alexander Hamilton", "1788", 10, 20, "political theory"),
 ("9", "0399501487", "Lord of the Flies", "William Golding", "1954", 10, 13, "political theory"),
 ("10", "1580898843", "Baby Loves Coding!", "Ruth Spiro", "2018", 10, 12, "tutorial");
+
+INSERT INTO cart VALUES
+("jack101", 0,0,0,0,0,0,0,0,0,0),
+("these222", 0,0,0,0,0,0,0,0,0,0),
+("barryobama", 0,0,0,0,0,0,0,0,0,0),
+("will3312", 0,0,0,0,0,0,0,0,0,0),
+("leomessireal", 0,0,0,0,0,0,0,0,0,0);
