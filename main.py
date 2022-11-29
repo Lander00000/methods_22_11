@@ -90,12 +90,19 @@ def main():
             if not rsure():
                 pass
             else:
-                delete_user(cur_user)
+                transact(cur_user)
             pass
         elif x == 9:
-            logout()
+            if not rsure():
+                pass
+            else:
+                delete_user(cur_user)
+                logout()
             pass
         elif x == 10:
+            logout()
+            pass
+        elif x == 11:
             active = 0
             print("exiting menu")
         else:
