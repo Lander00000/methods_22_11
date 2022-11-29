@@ -8,6 +8,16 @@ cursor = con.cursor(buffered=True)
 
 def main():
     global cur_user
+    menutext = """1. display Books
+2. View Cart
+3. Add Item to Cart
+4. Remove Item from Cart
+5. View Order History
+6. Edit Shipping Information
+7. Edit Payment Information
+8. Checkout
+9. Delete Account
+10. Log Out"""
     cur_user = ""
     active = 1
     while active:
