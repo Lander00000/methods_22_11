@@ -31,6 +31,7 @@ def main():
             else:
                 print("username and/or password incorrect")
                 pass
+        print(menutext)
         x = input("What would you like to do?(numeric input)")
         if not tryint(x):
             continue
