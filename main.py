@@ -8,15 +8,6 @@ cursor = con.cursor(buffered=True)
 
 def main():
     global cur_user
-    menutext = """1. Display Books
-2. View Cart
-3. Add Item to Cart
-4. Remove Item from Cart
-5. View Order History
-6. Edit Shipping Information
-7. Edit Payment Information
-8. Delete Account
-9. Log Out\n"""
     cur_user = ""
     active = 1
     while active:
@@ -30,13 +21,12 @@ def main():
             else:
                 print("username and/or password incorrect")
                 pass
-        print(menutext)
         x = input("What would you like to do?(numeric input)")
         if not tryint(x):
             continue
         if x == 1:
             filter = input("enter genre here or leave blank:")
-            if not trystr(table):
+            if not trystr(filter):
                 pass
             display("book", filter)
             pass
@@ -44,17 +34,40 @@ def main():
             display("cart", cur_user)
             pass
         elif x == 3:
-            
+            display("book")
+            add = input("please enter the bookid value of the book you wish to add to your cart:")
+            count = input("please enter the count of how many copies of the book to add:")
+            if tryint(add) and tryint(count):
+                addbook(cur_user, add, count)
             pass
         elif x == 4:
+            display("book")
+            remove = input("please enter the bookid value of the book you wish to add to your cart:")
+            count = input("please enter the count of how many copies of the book to add:")
+            if tryint(remove) and tryint(count):
+                removebook(cur_user, remove, count)
             pass
         elif x == 5:
+            display("transaction", cur_user)
             pass
         elif x == 6:
+            newinfo = input("enter new shipping info:")
+            if not trystr(newinfo):
+                pass
+            update_shipping(cur_user, newinfo)
             pass
         elif x == 7:
+            newinfo = input("enter new payment info:")
+            if not trystr(newinfo):
+                pass
+            update_payment(cur_user, newinfo)
             pass
-        elif x == 100:
+        elif x == 8:
+
+            pass
+        elif x == 9:
+            pass
+        elif x == 10:
             active = 0
             print("exiting menu")
         else:
@@ -300,6 +313,9 @@ def tryint(x):
         print("Error: enter integer input\n")
         return False
     return True
+
+def rsure():
+    input("are you sure: y/n")
 
 
 if __name__ == '__main__':
