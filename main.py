@@ -17,19 +17,42 @@ def main():
 7. Edit Payment Information
 8. Checkout
 9. Delete Account
-10. Log Out"""
+10. Log Out
+11. Quit"""
     cur_user = ""
     active = 1
     while active:
         while cur_user == "":
-            user = input("Username:")
-            password = input("Password:")
-            if not trystr(user) or not trystr(password):
-                pass
-            if login(user, password):
-                pass
+            print("1. login\n2. create account")
+            y = input("select:")
+            if not tryint(y):
+                continue
+            y = int(y)
+            if y == 1:
+                user = input("Username:")
+                password = input("Password:")
+                if not trystr(user) or not trystr(password):
+                    pass
+                if login(user, password):
+                    pass
+                else:
+                    print("username and/or password incorrect")
+                    pass
+            elif y == 2:
+                user = input("Username:")
+                if isexistuser(user):
+                    pass
+                password1 = input("Password:")
+                password2 = input("Repeat Password:")
+                if password1 != password2:
+                    print("passwords do not match")
+                    continue
+                name = input("name:")
+                shipping = input("shipping address:")
+                payment = input("payment info:")
+                add_user_item(user, password1, name, shipping, payment)
             else:
-                print("username and/or password incorrect")
+                print("please select from these options")
                 pass
         print(menutext)
         x = input("What would you like to do?(numeric input)")
@@ -53,6 +76,8 @@ def main():
                 if not rsure():
                     pass
                 else:
+                    add = int(add)
+                    count = int(count)
                     addbook(cur_user, add, count)
             pass
         elif x == 4:
@@ -63,6 +88,8 @@ def main():
                 if not rsure():
                     pass
                 else:
+                    remove = int(remove)
+                    count = int(count)
                     removebook(cur_user, remove, count)
             pass
         elif x == 5:
@@ -115,12 +142,12 @@ def display(tablename, genrefilter=""):
         return False
     cursor.execute(query1)
     table1 = cursor.fetchall()
-    list = []
+    headerslist = []
     for col in table1:
-        list.append(col[0])
+        headerslist.append(col[0])
     if tablename == "user":
-        list = ["username", "password", "name", "shippinginfo", "paymentinfo"]
-    table3 = PrettyTable(list)
+        headerslist = ["username", "password", "name", "shippinginfo", "paymentinfo"]
+    table3 = PrettyTable(headerslist)
 
     query2 = "select * from " + tablename
     cursor.execute(query2)
@@ -140,6 +167,16 @@ def display(tablename, genrefilter=""):
     print(table3)
     return True
 
+
+def isexistuser(user):
+    query1 = "SELECT * FROM `user` WHERE username = '{}'".format(user)
+    cursor.execute(query1)
+    table1 = cursor.fetchall()
+    if not table1:
+        return False
+    else:
+        print("User of that username already exists")
+        return True
 
 def login(user, password):
     query1 = "SELECT * FROM `user` WHERE username = '{}'".format(user)
@@ -227,6 +264,8 @@ def remove_stock(count, book):
         return False
     newcount = table1[0][0] - count
     if newcount < 0:
+        out = "more copies of bookid:{} ordered than there is currently in stock, canceling".format(book)
+        print(out)
         return False
     query2 = "update `book` set `stock` = '{}' where bookid = '{}'".format(newcount, book)
     cursor.execute(query2)
@@ -336,7 +375,7 @@ def trystr(x):
     try:
         str(x)
     except:
-        print("Error: enter string input\n")
+        print("Error: enter string input")
         return False
     return True
 
@@ -345,7 +384,7 @@ def tryint(x):
     try:
         int(x)
     except:
-        print("Error: enter integer input\n")
+        print("Error: enter integer input")
         return False
     return True
 
