@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `book`
 --
 
-CREATE TABLE `book` (
+CREATE TABLE IF NOT EXISTS `book` (
   `bookid` int(11) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -39,13 +39,31 @@ CREATE TABLE `book` (
   PRIMARY KEY(`bookid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS`user` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `shippinginfo` varchar(50) NOT NULL,
+  `paymentinfo` varchar(50) NOT NULL,
+  PRIMARY KEY(`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cart`
 --
 
-CREATE TABLE `cart` (
+CREATE TABLE IF NOT EXISTS `cart` (
   `username` varchar(30) NOT NULL,
   `b1` INT NOT NULL,
   `b2` INT NOT NULL,
@@ -62,8 +80,8 @@ CREATE TABLE `cart` (
     FOREIGN KEY (`username`)
     REFERENCES `user` (`username`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ON UPDATE CASCADE)
+    ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -71,7 +89,7 @@ CREATE TABLE `cart` (
 -- Table structure for table `transaction`
 --
 
-CREATE TABLE `transaction` (
+CREATE TABLE IF NOT EXISTS `transaction` (
   `transactionid` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `purchaseList` varchar(300) NOT NULL,
@@ -85,19 +103,6 @@ CREATE TABLE `transaction` (
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `shippinginfo` varchar(50) NOT NULL,
-  `paymentinfo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
